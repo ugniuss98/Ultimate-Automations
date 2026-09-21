@@ -1,5 +1,5 @@
-# robots.txt — NOCK Mail
-# https://nockmail.lt
+# robots.txt — Ultimate Automations
+# https://ultimateautomations.com
 
 # ── Visi paieškos robotai ──
 User-agent: *
@@ -50,4 +50,4 @@ User-agent: meta-externalagent
 Allow: /
 
 # ── Sitemap ──
-Sitemap: https://nockmail.lt/sitemap.xml
+Sitemap: https://ultimateautomations.com/sitemap.xml

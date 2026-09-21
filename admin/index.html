@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nock Admin</title>
+<title>Ultimate Automations — Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@200..900&display=swap" rel="stylesheet">
 <style>
@@ -169,7 +169,7 @@
 <!-- ── LOGIN ── -->
 <div class="screen active" id="s-login">
   <div class="auth-box">
-    <div class="auth-logo">NOCK<span>®</span> ADMIN</div>
+    <div class="auth-logo">ULTIMATE<span>®</span> ADMIN</div>
     <h1 class="auth-title">Prisijungimas</h1>
     <p class="auth-sub">Įveskite administratoriaus slaptažodį.</p>
     <div class="field-group">
@@ -186,11 +186,11 @@
 <!-- ── SETUP ── -->
 <div class="screen" id="s-setup">
   <div class="auth-box">
-    <div class="auth-logo">NOCK<span>®</span> ADMIN</div>
+    <div class="auth-logo">ULTIMATE<span>®</span> ADMIN</div>
     <h1 class="auth-title">Pirmą kartą</h1>
     <p class="auth-sub">
       Sukonfigūruokite admin panelį. Jums reikės GitHub Personal Access Token su <code style="font-size:12px; background:rgba(255,255,255,0.07); padding:1px 5px; border-radius:3px; font-family:monospace;">repo</code> teisėmis.<br><br>
-      <a href="https://github.com/settings/tokens/new?description=Nock+Admin&scopes=repo" target="_blank">→ Sukurti GitHub token čia</a>
+      <a href="https://github.com/settings/tokens/new?description=Ultimate+Automations+Admin&scopes=repo" target="_blank">→ Sukurti GitHub token čia</a>
     </p>
     <div class="field-group">
       <div>
@@ -212,7 +212,7 @@
 <!-- ── EDITOR ── -->
 <div class="screen" id="s-editor">
   <div class="topbar">
-    <div class="topbar-logo">NOCK<span>®</span> / admin</div>
+    <div class="topbar-logo">ULTIMATE<span>®</span> / admin</div>
     <div class="topbar-right">
       <a class="preview-link" href="/" target="_blank">↗︎ Peržiūrėti puslapį</a>
       <button class="btn-ghost" id="logoutBtn">Atsijungti</button>
@@ -237,37 +237,36 @@
 
 <script>
 const REPO_OWNER = 'ugniuss98';
-const REPO_NAME  = 'nockemails';
+const REPO_NAME  = 'Ultimate-Automations';
 const REPO_BRANCH = 'main';
 const CONTENT_PATH = 'content.json';
 
 const FIELD_DEFS = [
   { section: 'Hero' },
-  { key: 'hero_blurb',        label: 'Aprašymas (blurb)',        type: 'textarea' },
+  { key: 'hero_blurb',         label: 'Aprašymas (blurb)',          type: 'textarea' },
 
   { section: 'Statistikos' },
-  { key: 'stat_clients',      label: 'Klientai — skaičius',       type: 'number', hint: 'Tik skaičius, pvz.: 42' },
-  { key: 'stat_revenue_pct',  label: 'Pajamų dalis — %',          type: 'number', hint: 'Pvz.: 34' },
-  { key: 'stat_attribution',  label: 'Atributuotos pajamos — M€', type: 'number', hint: 'Pvz.: 2.8' },
-  { key: 'stat_open_rate',    label: 'Atvirumo rodiklis — %',     type: 'number', hint: 'Pvz.: 48' },
+  { key: 'stat_annual_value',  label: 'Metinė nauda — tūkst. €',    type: 'number', hint: 'Tik skaičius; rodoma kaip „135 000 €". Pvz.: 135' },
+  { key: 'stat_emails_month',  label: 'Laiškų per mėnesį — tūkst.', type: 'number', hint: 'Tik skaičius; rodoma kaip „100K+". Pvz.: 100' },
+  { key: 'stat_banks',         label: 'Bankų skaičius',             type: 'number', hint: 'Tik skaičius; rodoma kaip „20+". Pvz.: 20' },
+  { key: 'stat_rating',        label: 'Klientų įvertinimas',        type: 'text',   hint: 'Pvz.: 9,7' },
 
   { section: 'Kontaktai' },
-  { key: 'contact_company',   label: 'Įmonės pavadinimas',        type: 'text' },
-  { key: 'contact_phone',     label: 'Telefono numeris',          type: 'text',   hint: '+370 677 26884' },
-  { key: 'contact_email',     label: 'El. pašto adresas',         type: 'text',   hint: 'info@nock.lt' },
-  { key: 'contact_hours',     label: 'Darbo valandos',            type: 'text',   hint: 'I–V · 09:00–18:00' },
+  { key: 'contact_company',    label: 'Įmonės pavadinimas',         type: 'text' },
+  { key: 'contact_email',      label: 'El. pašto adresas',          type: 'text',   hint: 'justas@ultimateautomations.com' },
+  { key: 'contact_city',       label: 'Miestas',                    type: 'text',   hint: 'Vilnius' },
 
 ];
 
 // ── Auth helpers ──
 function getConfig() {
-  try { return JSON.parse(localStorage.getItem('nock_admin') || 'null'); } catch { return null; }
+  try { return JSON.parse(localStorage.getItem('ua_admin') || 'null'); } catch { return null; }
 }
-function setConfig(cfg) { localStorage.setItem('nock_admin', JSON.stringify(cfg)); }
-function clearConfig() { localStorage.removeItem('nock_admin'); }
-function isAuthed() { return sessionStorage.getItem('nock_auth') === '1'; }
-function setAuthed() { sessionStorage.setItem('nock_auth', '1'); }
-function clearAuthed() { sessionStorage.removeItem('nock_auth'); }
+function setConfig(cfg) { localStorage.setItem('ua_admin', JSON.stringify(cfg)); }
+function clearConfig() { localStorage.removeItem('ua_admin'); }
+function isAuthed() { return sessionStorage.getItem('ua_auth') === '1'; }
+function setAuthed() { sessionStorage.setItem('ua_auth', '1'); }
+function clearAuthed() { sessionStorage.removeItem('ua_auth'); }
 
 // ── Screen switch ──
 function show(id) {

@@ -1,11 +1,10 @@
 {
-  "hero_blurb": "Kuriame automatizacijas ir naujienlaiškius, kurie vidutiniškai mūsų klientams atneša papildomų 30–40% mėnesinių pajamų.",
-  "stat_clients": "18",
-  "stat_revenue_pct": "34",
-  "stat_attribution": "800",
-  "stat_open_rate": "44",
-  "contact_company": "MB Briskhaus Solutions",
-  "contact_phone": "+370 677 26884",
-  "contact_email": "info@nock.lt",
-  "contact_hours": "I–V · 09:00–18:00"
+  "hero_blurb": "Padedame ambicingoms įmonėms rasti tikslią vietą, kur AI gali duoti daugiausia naudos, ir ten sukuriame veikiančią sistemą. Kuriame verslo sprendimus, ne pavienius IT produktus.",
+  "stat_annual_value": "135",
+  "stat_emails_month": "100",
+  "stat_banks": "20",
+  "stat_rating": "9,7",
+  "contact_company": "Ultimate Automations",
+  "contact_email": "justas@ultimateautomations.com",
+  "contact_city": "Vilnius"
 }

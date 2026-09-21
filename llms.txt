@@ -1,78 +1,73 @@
-# NOCK Mail
+# Ultimate Automations
 
-> El. pašto rinkodaros agentūra Vilniuje (Lietuva). Kuriame el. pašto automatizacijas ir naujienlaiškius e-parduotuvėms, kurie vidutiniškai atneša +30–40% papildomų mėnesinių pajamų. Sertifikuoti Klaviyo ir Omnisend partneriai.
+> Kuriame AI verslo sistemas. Padedame įmonėms rasti tikslią vietą, kur dirbtinis intelektas duos daugiausia naudos, ir ten sukuriame veikiančią, prižiūrimą sistemą. Kuriame verslo sprendimus, ne pavienius IT produktus.
 
 ## Apie
 
-- **Pavadinimas:** NOCK Mail
-- **Juridinis asmuo:** MB Briskhaus Solutions
-- **Veikla:** El. pašto rinkodara (email marketing) e-komercijos prekės ženklams
-- **Veiklos pradžia:** 2022
-- **Vieta:** V. Nagevičiaus g. 3, Vilnius, Lietuva
-- **Aptarnaujamos rinkos:** Lietuva, Latvija, Estija (Baltijos šalys)
-- **Partnerystės:** Sertifikuoti Klaviyo ir Omnisend partneriai
-- **Įrankiai:** Klaviyo, Omnisend, Mailchimp, MailerLite, ActiveCampaign, Smartlead, Instantly, Apollo
+- **Pavadinimas:** Ultimate Automations
+- **Veikla:** AI verslo sistemos, procesų automatizavimas, integracijos
+- **Vieta:** Vilnius, Lietuva
+- **Aptarnaujamos rinkos:** Lietuva, Latvija, Estija
+- **Kontaktas:** justas@ultimateautomations.com
+- **Klientų įvertinimas:** 9,7 / 10 (mūsų klientų apklausa, 2026 m. rugsėjis)
+- **Mastas:** sprendimai kurti tiek 10 žmonių komandoms, tiek 10 000 darbuotojų organizacijoms
+
+## Požiūris
+
+Kiekvienoje įmonėje yra darbų, kurių niekas nenori daryti: perkelti duomenis iš vienos
+sistemos į kitą, suvesti sąskaitas, patikrinti dokumentus, kas savaitę rinkti tą pačią
+ataskaitą. Tokie darbai suvalgo šimtus valandų, o žmonės, samdyti galvoti, dienas leidžia
+kopijuodami. Rutiną perima AI, o komandai lieka sprendimai ir darbas, kuris kuria vertę.
+
+Sprendimą lemia problema, ne įmonės dydis. Sistema turi prisitaikyti prie verslo, ne verslas
+prie sistemos, todėl sistemos kuriamos taip, kad jas būtų galima plėsti nepradedant nuo nulio.
 
 ## Paslaugos
 
-### 1. El. pašto automatizacijos (veikia 24/7)
-Laiškai, siunčiami pagal vartotojo elgseną, ne pagal kalendorių:
-- Welcome serija (3–5 laiškai naujiems prenumeratoriams)
-- Apleisto krepšelio atstatymas
-- Apleista apmokėjimo eiga (aukščiausia konversija)
-- Apleista naršymo sesija
-- Po-pirkimo srautas
-- Pop-up formos ir lead magnetai
+1. **AI galimybių analizė** — randame procesus, kuriuose AI gali duoti didžiausią verslo grąžą.
+2. **Individualios AI sistemos** — projektuojame ir kuriame sistemas pagal jūsų verslo logiką.
+3. **Procesų automatizavimas** — paverčiame rankinius procesus valdomomis sistemomis.
+4. **Integracijos** — jungiame AI su ERP, CRM, bankais, el. paštu, duomenų bazėmis ir vidinėmis sistemomis.
+5. **AI sistemų diegimas** — integruojame sprendimą į esamą infrastruktūrą, negriaudami to, kas veikia.
+6. **Priežiūra ir plėtra** — po paleidimo stebime, tobuliname ir plečiame sistemą kartu su verslu.
 
-### 2. Naujienlaiškiai
-Suplanuotos kampanijos: produktų pristatymai, akcijos, švenčių serijos:
-- Strategija ir turinio kalendorius
-- Tekstas prekės ženklo tonu (copywriting)
-- Dizainas ir šablonai (Figma)
-- Segmentavimas pagal elgseną ir vertę
-- A/B testai
-- Mėnesinės ataskaitos
+## Kaip dirbame
 
-### 3. Auditas ir strategija
-Esamo sąrašo, pristatomumo rodiklių ir konkurentų komunikacijos peržiūra su veiksmų planu.
+1. **Surandame** — pradedame ne nuo technologijos, o nuo verslo: kur prarandama daugiausia laiko ir pinigų.
+2. **Sukuriame** — kuriame veikiančią sistemą, ne prezentaciją; pirmą versiją testuojame su tikrais duomenimis.
+3. **Paleidžiame ir prižiūrime** — sistema baigta tada, kai ja kasdien naudojasi komanda.
 
-## Procesas (6 žingsniai)
-1. Auditas ir strategija (1–2 sav.)
-2. Sąrašas ir segmentai (pop-ups, formos, lead magnetai)
-3. Tekstas ir dizainas (copywriting, brand voice)
-4. Automatizacijų flow'ai (su A/B variantais)
-5. Testavimas ir optimizacija (deliverability, A/B)
-6. Ataskaitos ir plėtra (revenue, KPI)
+## Technologijos
 
-## Rezultatai
-- 18+ aktyvių klientų (e-shop ir B2B prekės ženklai Baltijos šalyse)
-- ~34% vidutinė pajamų dalis iš el. pašto
-- 800K€+ atributuotų pajamų per 12 mėn.
-- ~44% vidutinis atidarymo rodiklis
+Renkamės tą technologiją, kuri geriausiai sprendžia problemą, ne madingiausią:
+Natural Language Processing, Computer Vision, Machine Learning, Deep Learning,
+Reinforcement Learning, Generative AI, Expert Systems, Speech Recognition.
+Geras sprendimas dažniausiai sujungia kelias iš jų.
 
-## Tikslinės nišos
-Kosmetika ir grožis, mada ir apranga, maistas ir gėrimai, sveikata ir wellness, sportas, namų interjeras, elektronika, augintiniai, B2B paslaugos.
+## Projektai
 
-## Kontaktai
-- **El. paštas:** info@nock.lt
-- **Telefonas:** +370 677 26884
-- **Darbo laikas:** I–V, 09:00–18:00
-- **Instagram:** https://www.instagram.com/nock.agency/
-- **Facebook:** https://www.facebook.com/profile.php?id=61589055015703
+- **El. laiškų automatizavimas** (klientų aptarnavimas) — 100 000+ laiškų per mėnesį,
+  55 000 € metinė nauda. /projektai/el-laisku-automatizavimas
+- **Banko operacijų sutikrinimas** (finansai ir apskaita) — 20+ bankų viena sistema,
+  80 000 € metinė nauda. /projektai/banko-israsu-sutikrinimas
+- **Sąskaitų faktūrų apdorojimas** (apskaita) — sąskaitos nuskaitomos ir įrašomos
+  automatiškai. /projektai/saskaitu-fakturu-apdorojimas
+- **Dokumentų apdorojimas** (dokumentų valdymas) — sutartys ir aktai tampa duomenimis.
+  /projektai/dokumentu-apdorojimas
+- **Techninis AI asistentas** (techninė priežiūra) — serviso užklausos virsta užduotimis.
+  /projektai/technikos-prieziuros-asistentas
+
+## Kam tai skirta
+
+Įmonėms, kurios turi sudėtingus procesus, daug duomenų ir ambiciją augti — ir kurioms
+AI turi duoti realų rezultatą, o ne likti eksperimentu.
 
 ## Nuorodos
-- [Pagrindinis puslapis](https://nockmail.lt/)
-- [El. pašto automatizacijos](https://nockmail.lt/paslaugos/automatizacijos) — šeši srautai, kurie siunčiasi pagal pirkėjo elgseną
-- [Naujienlaiškiai](https://nockmail.lt/paslaugos/naujienlaiskiai) — strategija, tekstas, dizainas, segmentavimas, ataskaitos
-- [Klaviyo agentūra](https://nockmail.lt/klaviyo-agentura) — diegimas, migracija, srautai, segmentavimas
-- [Omnisend agentūra](https://nockmail.lt/omnisend-agentura) — diegimas, migracija, el. paštas + SMS viename sraute
-- [Pajamų skaičiuoklė](https://nockmail.lt/skaiciuokle) — orientacinis el. pašto pajamų potencialas
-- [Blogas](https://nockmail.lt/blog) — straipsniai apie el. pašto rinkodarą
-- [Welcome serija](https://nockmail.lt/blog/welcome-serija) — kodėl pirmi penki laiškai uždirba daugiausiai
-- [Apleistas krepšelis](https://nockmail.lt/blog/apleistas-krepselis) — kaip susigrąžinti prarastus užsakymus
-- [Pristatomumas](https://nockmail.lt/blog/pristatomumas) — SPF, DKIM, DMARC, domeno apšilimas, sąrašo higiena
-- [Segmentavimas](https://nockmail.lt/blog/segmentavimas) — RFM, įsitraukimo ir elgsenos segmentai
-- [Klaviyo ar Omnisend](https://nockmail.lt/blog/klaviyo-ar-omnisend) — platformų palyginimas ir migracija
-- [Reaktyvacija](https://nockmail.lt/blog/reaktyvacija) — neaktyvūs kontaktai ir sąrašo valymas
-- [Procesas](https://nockmail.lt/#process)
-- [Kontaktai](https://nockmail.lt/#contact)
+
+- Pradžia: https://ultimateautomations.com/
+- Projektai: https://ultimateautomations.com/projektai
+- Paslaugos: https://ultimateautomations.com/#paslaugos
+- Kaip dirbame: https://ultimateautomations.com/#procesas
+- Technologijos: https://ultimateautomations.com/#technologijos
+- DUK: https://ultimateautomations.com/#duk
+- Kontaktai: https://ultimateautomations.com/#kontaktai

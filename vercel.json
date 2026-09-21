@@ -8,10 +8,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.nockmail.lt"
+          "value": "www.ultimateautomations.com"
         }
       ],
-      "destination": "https://nockmail.lt/:path*",
+      "destination": "https://ultimateautomations.com/:path*",
       "permanent": true
     }
   ],
