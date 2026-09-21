@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nock Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@200..900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0E0E0E;
+    --surface: #161616;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.18);
+    --ink: #fff;
+    --ink2: rgba(255,255,255,0.55);
+    --ink3: rgba(255,255,255,0.28);
+    --accent: #C8FF00;
+    --mono: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sans: 'Inter Tight', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --radius: 10px;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100dvh; }
+
+  /* ── Screens ── */
+  .screen { display: none; min-height: 100dvh; }
+  .screen.active { display: flex; }
+
+  /* ── Login & Setup ── */
+  #s-login, #s-setup {
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .auth-box {
+    width: 100%; max-width: 420px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+  }
+  .auth-logo {
+    font-size: 13px; font-family: var(--mono); letter-spacing: 0.12em;
+    color: var(--ink3); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .auth-logo::before {
+    content: ''; display: inline-block; width: 8px; height: 8px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .auth-title { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .auth-sub { font-size: 14px; color: var(--ink2); margin-bottom: 32px; line-height: 1.5; }
+  .auth-sub a { color: var(--accent); text-decoration: none; }
+  .auth-sub a:hover { text-decoration: underline; }
+
+  .field-group { display: flex; flex-direction: column; gap: 16px; }
+  .field-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--ink3); text-transform: uppercase; margin-bottom: 6px; }
+  .field-note { font-size: 11px; color: var(--ink3); margin-top: 4px; line-height: 1.5; }
+  .field-note code { font-family: var(--mono); background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; }
+
+  input[type=text], input[type=password] {
+    width: 100%; background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--ink); font-family: var(--mono); font-size: 13px;
+    padding: 11px 14px; outline: none; transition: border-color .2s;
+  }
+  input[type=text]:focus, input[type=password]:focus { border-color: var(--accent); }
+
+  .btn-primary {
+    width: 100%; margin-top: 24px;
+    background: var(--accent); color: #000; border: none; border-radius: var(--radius);
+    font-family: var(--sans); font-size: 15px; font-weight: 700;
+    padding: 13px; cursor: pointer; transition: opacity .15s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+  .err-msg { font-size: 13px; color: #FF5A5A; margin-top: 12px; display: none; }
+  .err-msg.show { display: block; }
+
+  /* ── Editor ── */
+  #s-editor { flex-direction: column; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 56px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .topbar-logo { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; color: var(--ink2); }
+  .topbar-logo span { color: var(--accent); }
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
+
+  .btn-save {
+    background: var(--accent); color: #000; border: none;
+    border-radius: 8px; font-family: var(--sans); font-size: 14px; font-weight: 700;
+    padding: 9px 20px; cursor: pointer; transition: opacity .15s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-save:hover { opacity: 0.88; }
+  .btn-save:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-save .pip { width: 7px; height: 7px; background: #000; border-radius: 50%; }
+
+  .btn-ghost {
+    background: transparent; color: var(--ink2); border: 1px solid var(--border);
+    border-radius: 8px; font-family: var(--sans); font-size: 13px; font-weight: 500;
+    padding: 8px 14px; cursor: pointer; transition: border-color .15s, color .15s;
+  }
+  .btn-ghost:hover { border-color: var(--border-hover); color: var(--ink); }
+
+  .editor-body { flex: 1; padding: 32px 24px 80px; max-width: 760px; width: 100%; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink3); font-family: var(--mono); margin-bottom: 16px; margin-top: 40px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .section-label:first-child { margin-top: 0; }
+
+  .content-field {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; margin-bottom: 10px;
+    transition: border-color .2s;
+  }
+  .content-field:focus-within { border-color: var(--border-hover); }
+  .cf-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; gap: 12px; }
+  .cf-label { font-size: 13px; font-weight: 600; }
+  .cf-key { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+
+  .content-field input, .content-field textarea {
+    width: 100%; background: transparent; border: none;
+    color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5;
+    outline: none; resize: vertical;
+  }
+  .content-field textarea { min-height: 68px; }
+  .content-field input[type=number] { font-family: var(--mono); }
+
+  /* ── Status bar ── */
+  .status-bar {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 40px; padding: 10px 20px;
+    font-size: 13px; color: var(--ink2);
+    display: none; align-items: center; gap: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    white-space: nowrap;
+  }
+  .status-bar.show { display: flex; }
+  .status-bar.ok { border-color: rgba(200,255,0,0.3); color: var(--accent); }
+  .status-bar.err { border-color: rgba(255,90,90,0.3); color: #FF5A5A; }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  /* ── Preview link ── */
+  .preview-link {
+    font-size: 12px; color: var(--ink3); text-decoration: none;
+    display: flex; align-items: center; gap: 4px; transition: color .15s;
+  }
+  .preview-link:hover { color: var(--ink2); }
+
+  /* ── Unsaved indicator ── */
+  .unsaved-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    display: none; margin-left: 2px;
+  }
+  .unsaved-dot.show { display: inline-block; }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div class="screen active" id="s-login">
+  <div class="auth-box">
+    <div class="auth-logo">NOCK<span>®</span> ADMIN</div>
+    <h1 class="auth-title">Prisijungimas</h1>
+    <p class="auth-sub">Įveskite administratoriaus slaptažodį.</p>
+    <div class="field-group">
+      <div>
+        <div class="field-label">Slaptažodis</div>
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+      </div>
+    </div>
+    <button class="btn-primary" id="loginBtn">Prisijungti →</button>
+    <div class="err-msg" id="loginErr">Neteisingas slaptažodis.</div>
+  </div>
+</div>
+
+<!-- ── SETUP ── -->
+<div class="screen" id="s-setup">
+  <div class="auth-box">
+    <div class="auth-logo">NOCK<span>®</span> ADMIN</div>
+    <h1 class="auth-title">Pirmą kartą</h1>
+    <p class="auth-sub">
+      Sukonfigūruokite admin panelį. Jums reikės GitHub Personal Access Token su <code style="font-size:12px; background:rgba(255,255,255,0.07); padding:1px 5px; border-radius:3px; font-family:monospace;">repo</code> teisėmis.<br><br>
+      <a href="https://github.com/settings/tokens/new?description=Nock+Admin&scopes=repo" target="_blank">→ Sukurti GitHub token čia</a>
+    </p>
+    <div class="field-group">
+      <div>
+        <div class="field-label">GitHub Personal Access Token</div>
+        <input type="password" id="setupToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        <div class="field-note">Saugoma tik jūsų naršyklėje (localStorage). Niekur nesiunčiama.</div>
+      </div>
+      <div>
+        <div class="field-label">Admin slaptažodis</div>
+        <input type="password" id="setupPass" placeholder="Sugalvokite slaptažodį">
+        <div class="field-note">Slaptažodis prisijungimui prie šio admin puslapio.</div>
+      </div>
+    </div>
+    <button class="btn-primary" id="setupBtn">Išsaugoti ir pradėti →</button>
+    <div class="err-msg" id="setupErr">Užpildykite abu laukus.</div>
+  </div>
+</div>
+
+<!-- ── EDITOR ── -->
+<div class="screen" id="s-editor">
+  <div class="topbar">
+    <div class="topbar-logo">NOCK<span>®</span> / admin</div>
+    <div class="topbar-right">
+      <a class="preview-link" href="/" target="_blank">↗︎ Peržiūrėti puslapį</a>
+      <button class="btn-ghost" id="logoutBtn">Atsijungti</button>
+      <button class="btn-save" id="saveBtn">
+        <span class="pip"></span>
+        Išsaugoti
+        <span class="unsaved-dot" id="unsavedDot"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="editor-body" id="editorBody">
+    <!-- Fields injected by JS -->
+  </div>
+</div>
+
+<!-- ── STATUS BAR ── -->
+<div class="status-bar" id="statusBar">
+  <span class="status-dot"></span>
+  <span id="statusMsg">Saugoma...</span>
+</div>
+
+<script>
+const REPO_OWNER = 'ugniuss98';
+const REPO_NAME  = 'nockemails';
+const REPO_BRANCH = 'main';
+const CONTENT_PATH = 'content.json';
+
+const FIELD_DEFS = [
+  { section: 'Hero' },
+  { key: 'hero_blurb',        label: 'Aprašymas (blurb)',        type: 'textarea' },
+
+  { section: 'Statistikos' },
+  { key: 'stat_clients',      label: 'Klientai — skaičius',       type: 'number', hint: 'Tik skaičius, pvz.: 42' },
+  { key: 'stat_revenue_pct',  label: 'Pajamų dalis — %',          type: 'number', hint: 'Pvz.: 34' },
+  { key: 'stat_attribution',  label: 'Atributuotos pajamos — M€', type: 'number', hint: 'Pvz.: 2.8' },
+  { key: 'stat_open_rate',    label: 'Atvirumo rodiklis — %',     type: 'number', hint: 'Pvz.: 48' },
+
+  { section: 'Kontaktai' },
+  { key: 'contact_company',   label: 'Įmonės pavadinimas',        type: 'text' },
+  { key: 'contact_phone',     label: 'Telefono numeris',          type: 'text',   hint: '+370 677 26884' },
+  { key: 'contact_email',     label: 'El. pašto adresas',         type: 'text',   hint: 'info@nock.lt' },
+  { key: 'contact_hours',     label: 'Darbo valandos',            type: 'text',   hint: 'I–V · 09:00–18:00' },
+
+];
+
+// ── Auth helpers ──
+function getConfig() {
+  try { return JSON.parse(localStorage.getItem('nock_admin') || 'null'); } catch { return null; }
+}
+function setConfig(cfg) { localStorage.setItem('nock_admin', JSON.stringify(cfg)); }
+function clearConfig() { localStorage.removeItem('nock_admin'); }
+function isAuthed() { return sessionStorage.getItem('nock_auth') === '1'; }
+function setAuthed() { sessionStorage.setItem('nock_auth', '1'); }
+function clearAuthed() { sessionStorage.removeItem('nock_auth'); }
+
+// ── Screen switch ──
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── Init ──
+function init() {
+  const cfg = getConfig();
+  if (!cfg) { show('s-setup'); return; }
+  if (isAuthed()) { showEditor(); return; }
+  show('s-login');
+}
+
+// ── Setup ──
+document.getElementById('setupBtn').addEventListener('click', () => {
+  const token = document.getElementById('setupToken').value.trim();
+  const pass  = document.getElementById('setupPass').value.trim();
+  const err   = document.getElementById('setupErr');
+  if (!token || !pass) { err.classList.add('show'); return; }
+  err.classList.remove('show');
+  setConfig({ token, passHash: simpleHash(pass) });
+  setAuthed();
+  showEditor();
+});
+
+// ── Login ──
+document.getElementById('loginPass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('loginBtn').click();
+});
+document.getElementById('loginBtn').addEventListener('click', () => {
+  const pass = document.getElementById('loginPass').value.trim();
+  const cfg  = getConfig();
+  const err  = document.getElementById('loginErr');
+  if (!cfg || simpleHash(pass) !== cfg.passHash) {
+    err.classList.add('show');
+    document.getElementById('loginPass').value = '';
+    return;
+  }
+  err.classList.remove('show');
+  setAuthed();
+  showEditor();
+});
+
+// ── Logout ──
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  clearAuthed();
+  show('s-login');
+  document.getElementById('loginPass').value = '';
+});
+
+// ── Editor ──
+let currentContent = {};
+let isDirty = false;
+
+async function showEditor() {
+  show('s-editor');
+  await loadContent();
+  renderFields();
+}
+
+async function loadContent() {
+  const cfg = getConfig();
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}?ref=${REPO_BRANCH}`,
+      { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (!res.ok) throw new Error('GitHub API error ' + res.status);
+    const data = await res.json();
+    const raw = atob(data.content.replace(/\n/g, ''));
+    currentContent = JSON.parse(decodeURIComponent(escape(raw)));
+  } catch (e) {
+    showStatus('Klaida įkeliant turinį: ' + e.message, 'err');
+  }
+}
+
+function renderFields() {
+  const body = document.getElementById('editorBody');
+  body.innerHTML = '';
+  FIELD_DEFS.forEach(def => {
+    if (def.section) {
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = def.section;
+      body.appendChild(label);
+      return;
+    }
+    const wrap = document.createElement('div');
+    wrap.className = 'content-field';
+    const head = document.createElement('div');
+    head.className = 'cf-head';
+    head.innerHTML = `<span class="cf-label">${def.label}</span><span class="cf-key">${def.key}</span>`;
+    wrap.appendChild(head);
+    let input;
+    if (def.type === 'textarea') {
+      input = document.createElement('textarea');
+      input.rows = 3;
+    } else {
+      input = document.createElement('input');
+      input.type = def.type === 'number' ? 'text' : 'text';
+    }
+    input.value = currentContent[def.key] ?? '';
+    if (def.hint) input.placeholder = def.hint;
+    input.dataset.key = def.key;
+    input.addEventListener('input', () => markDirty());
+    wrap.appendChild(input);
+    body.appendChild(wrap);
+  });
+  isDirty = false;
+  document.getElementById('unsavedDot').classList.remove('show');
+}
+
+function markDirty() {
+  isDirty = true;
+  document.getElementById('unsavedDot').classList.add('show');
+}
+
+function getEditorValues() {
+  const vals = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    vals[el.dataset.key] = el.value;
+  });
+  return vals;
+}
+
+// ── Save ──
+document.getElementById('saveBtn').addEventListener('click', saveContent);
+
+async function saveContent() {
+  const cfg = getConfig();
+  const saveBtn = document.getElementById('saveBtn');
+  saveBtn.disabled = true;
+  showStatus('Saugoma...', 'loading');
+
+  const newContent = getEditorValues();
+
+  try {
+    // Get current SHA
+    const fileRes = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}?ref=${REPO_BRANCH}`,
+      { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (!fileRes.ok) throw new Error('Nepavyko gauti failo SHA');
+    const fileData = await fileRes.json();
+
+    // Commit new content
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2) + '\n')));
+    const putRes = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${cfg.token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+          message: 'Admin: update site content',
+          content: encoded,
+          sha: fileData.sha,
+          branch: REPO_BRANCH
+        })
+      }
+    );
+    if (!putRes.ok) {
+      const errData = await putRes.json();
+      throw new Error(errData.message || 'GitHub API klaida');
+    }
+    currentContent = newContent;
+    isDirty = false;
+    document.getElementById('unsavedDot').classList.remove('show');
+    showStatus('✓ Išsaugota. Vercel deploy ~30s.', 'ok');
+  } catch (e) {
+    showStatus('Klaida: ' + e.message, 'err');
+  } finally {
+    saveBtn.disabled = false;
+  }
+}
+
+// ── Status bar ──
+let statusTimer;
+function showStatus(msg, type) {
+  const bar = document.getElementById('statusBar');
+  document.getElementById('statusMsg').textContent = msg;
+  bar.className = 'status-bar show' + (type === 'ok' ? ' ok' : type === 'err' ? ' err' : '');
+  clearTimeout(statusTimer);
+  if (type !== 'loading') {
+    statusTimer = setTimeout(() => bar.classList.remove('show'), 4000);
+  }
+}
+
+// ── Simple hash (for client-side password check) ──
+function simpleHash(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = (h * 0x01000193) >>> 0;
+  }
+  return h.toString(16);
+}
+
+// ── Keyboard shortcut ──
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    if (document.getElementById('s-editor').classList.contains('active')) saveContent();
+  }
+});
+
+// ── Start ──
+init();
+</script>
+</body>
+</html>

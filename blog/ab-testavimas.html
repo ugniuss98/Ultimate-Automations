@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z52GV4VL15"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z52GV4VL15');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ───── Primary Meta ───── -->
+<title>A/B testavimas el. paštu: ką ir kaip testuoti | NOCK Mail</title>
+<meta name="description" content="A/B testavimas el. paštu naudingas tik su pakankamu gavėjų kiekiu. Kokios Klaviyo reikšmingumo ribos, ką testuoti pirma ir kada testas neturi prasmės.">
+<meta name="keywords" content="A/B testavimas, A/B testas el. paštu, temos eilutės testavimas, statistinis reikšmingumas, Klaviyo A/B testas, el. pašto optimizavimas">
+<meta name="author" content="NOCK Mail · MB Briskhaus Solutions">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="Lithuanian">
+<link rel="canonical" href="https://nockmail.lt/blog/ab-testavimas">
+
+<!-- ───── Theme / Icons ───── -->
+<meta name="theme-color" content="#0E0E0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='22'%20fill='%230E0E0E'/%3E%3Ctext%20x='50'%20y='70'%20font-family='Arial,sans-serif'%20font-size='62'%20font-weight='700'%20fill='%23fff'%20text-anchor='middle'%3EN%3C/text%3E%3Ccircle%20cx='78'%20cy='30'%20r='9'%20fill='%232E5741'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='22'%20fill='%230E0E0E'/%3E%3Ctext%20x='50'%20y='70'%20font-family='Arial,sans-serif'%20font-size='62'%20font-weight='700'%20fill='%23fff'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ───── Open Graph ───── -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NOCK Mail">
+<meta property="og:locale" content="lt_LT">
+<meta property="og:title" content="A/B testavimas el. paštu: ką ir kaip testuoti">
+<meta property="og:description" content="A/B testavimas el. paštu naudingas tik su pakankamu gavėjų kiekiu. Kokios Klaviyo reikšmingumo ribos, ką testuoti pirma ir kada testas neturi prasmės.">
+<meta property="og:url" content="https://nockmail.lt/blog/ab-testavimas">
+<meta property="og:image" content="https://nockmail.lt/uploads/og-cover.png">
+<meta property="og:image:alt" content="NOCK Mail — el. pašto rinkodaros agentūra">
+<meta property="article:published_time" content="2026-07-31">
+<meta property="article:modified_time" content="2026-07-31">
+<meta property="article:section" content="Strategija">
+<meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61589055015703">
+
+<!-- ───── Twitter / X Card ───── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A/B testavimas el. paštu: ką ir kaip testuoti">
+<meta name="twitter:description" content="Kokios Klaviyo reikšmingumo ribos, ką testuoti pirma ir kada A/B testas apskritai neturi prasmės.">
+<meta name="twitter:image" content="https://nockmail.lt/uploads/og-cover.png">
+
+<!-- ───── Performance ───── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+
+<!-- ───── Structured Data (Schema.org · JSON-LD) ───── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://nockmail.lt/blog/ab-testavimas#article",
+      "headline": "A/B testavimas el. paštu: ką ir kaip testuoti",
+      "description": "A/B testavimas el. paštu naudingas tik su pakankamu gavėjų kiekiu. Kokios Klaviyo reikšmingumo ribos, ką testuoti pirma ir kada testas neturi prasmės.",
+      "inLanguage": "lt-LT",
+      "articleSection": "Strategija",
+      "keywords": "A/B testavimas, A/B testas el. paštu, temos eilutės testavimas, statistinis reikšmingumas, Klaviyo A/B testas, el. pašto optimizavimas",
+      "wordCount": 1316,
+      "datePublished": "2026-07-31",
+      "dateModified": "2026-07-31",
+      "url": "https://nockmail.lt/blog/ab-testavimas",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nockmail.lt/blog/ab-testavimas"
+      },
+      "image": "https://nockmail.lt/uploads/og-cover.png",
+      "author": {
+        "@type": "Organization",
+        "name": "NOCK Mail",
+        "url": "https://nockmail.lt/"
+      },
+      "publisher": {
+        "@id": "https://nockmail.lt/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://nockmail.lt/blog#blog"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nockmail.lt/blog/ab-testavimas#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Pradžia",
+          "item": "https://nockmail.lt/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogas",
+          "item": "https://nockmail.lt/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "A/B testavimas el. paštu: ką ir kaip testuoti"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nockmail.lt/blog/ab-testavimas#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kiek gavėjų reikia, kad A/B testas būtų patikimas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Klaviyo kampanijos testą laiko statistiškai reikšmingu, kai kiekvieną variantą gavo bent 50 žmonių ir laimėjimo tikimybė siekia bent 90 %. Srautų žinutėms riba gerokai aukštesnė — bent 500 gavėjų kiekvienam variantui. Praktikoje 50 gavėjų yra absoliutus minimumas, o realiam sprendimui verta turėti kelis tūkstančius."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ką testuoti pirmiausia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pradėti verta nuo dalykų, kurie keičia rezultatą labiausiai: pasiūlymo ir siuntimo laiko. Temos eilutė yra populiariausias testas, bet jos poveikis mažesnis nei atrodo, o dėl Apple Mail Privacy Protection atidarymo rodiklis nebėra patikimas testo matas. Testuoti spalvą ar mygtuko tekstą prasminga tik dideliuose sąrašuose."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kodėl A/B testas parodė laimėtoją, bet rezultatas nepasikartojo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dažniausiai todėl, kad imtis buvo per maža ir skirtumas atsirado atsitiktinai. Antra dažna priežastis — testuoti buvo keli dalykai vienu metu, todėl neaišku, kuris lėmė rezultatą. Trečia — laimėtojas nustatytas pagal atidarymus, kurie šiandien iškraipyti automatinių atidarymų."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ar galima testuoti srautų laiškus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Galima, ir tai dažnai vertingiau nei kampanijų testai, nes srautų laiškai siunčiami nuolat. Bet reikia kantrybės: Klaviyo srautų žinutei reikalauja bent 500 gavėjų kiekvienam variantui, o mažesnėse parduotuvėse tiek susikaupia per kelias savaites ar mėnesius."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="read-bar" id="readBar" aria-hidden="true"></div>
+
+<!-- ───────── NAV ───────── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">NOCK <span style="font-weight:300">Mail</span></a>
+    <div class="nav-links">
+      <a href="/#process">Procesas</a>
+      <a href="/#services">Paslaugos</a>
+      <a href="/#calculator">Skaičiuoklė</a>
+      <a href="/#contact">Kontaktai</a>
+      <a href="https://www.nock.lt/" target="_blank" rel="noopener">Reklama</a>
+      <a href="/blog">Blogas</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-cta" href="/#contact">Susisiekti</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Meniu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="/#process" class="nd-link">Procesas</a>
+  <a href="/#services" class="nd-link">Paslaugos</a>
+  <a href="/#calculator" class="nd-link">Skaičiuoklė</a>
+  <a href="/#contact" class="nd-link">Kontaktai</a>
+  <a href="https://www.nock.lt/" target="_blank" rel="noopener" class="nd-link">Reklama</a>
+  <a href="/blog" class="nd-link">Blogas</a>
+  <a href="/#contact" class="nd-cta">Susisiekti →</a>
+</div>
+
+<!-- ───────── STRAIPSNIO ANTRAŠTĖ ───────── -->
+<header class="wrap sub-hero">
+  <div class="sub-hero-bg" aria-hidden="true">
+    <span class="blob s1"></span>
+    <span class="blob s2"></span>
+    <span class="blob s3"></span>
+  </div>
+  <nav class="crumbs" aria-label="Naršymo kelias">
+    <a href="/">Pradžia</a>
+    <span class="sep">/</span>
+    <a href="/blog">Blogas</a>
+    <span class="sep">/</span>
+    <span aria-current="page">A/B testavimas</span>
+  </nav>
+  <div class="sub-hero-grid">
+    <div>
+      <h1>A/B testavimas el. paštu: <span class="ital">ką ir kaip testuoti</span></h1>
+      <div class="post-hero-meta">
+        <span class="cat">Strategija</span>
+        <span>Liepos 31, 2026</span>
+        <span class="sep">·</span>
+        <span>7 min skaitymo</span>
+      </div>
+    </div>
+    <div class="sub-hero-side">
+      <p class="lede">Dauguma A/B testų e-parduotuvėse nieko neįrodo — imtis per maža, o laimėtojas nustatomas pagal rodiklį, kuriuo nebegalima pasitikėti. Kaip testuoti taip, kad iš to būtų nauda.</p>
+      <div class="sub-hero-ctas">
+        <a class="btn dark" href="/#contact">Nemokamas auditas</a>
+        <a class="btn" href="/blog">Visi straipsniai →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── TURINYS ───────── -->
+<section class="wrap pad-y">
+  <div class="post-layout">
+    <article class="post-body prose">
+      <div class="post-key full">
+        <span class="pk-label">↳ Trumpai</span>
+        <ul>
+          <li>Klaviyo kampanijos testą laiko reikšmingu, kai kiekvieną variantą gavo bent 50 žmonių ir laimėjimo tikimybė siekia 90 %.</li>
+          <li>Srautų žinutėms riba gerokai aukštesnė — bent 500 gavėjų kiekvienam variantui.</li>
+          <li>Testuoti verta po vieną dalyką; kelios keistos vietos vienu metu paverčia rezultatą nepaaiškinamu.</li>
+          <li>Laimėtoją rinktis pagal paspaudimus ar užsakymus, ne pagal atidarymus.</li>
+        </ul>
+      </div>
+
+      <h2 id="kodel-nepavyksta" data-toc="Kodėl testai nieko neįrodo">Kodėl dauguma A/B testų nieko neįrodo</h2>
+      <p>A/B testavimas skamba kaip savaime suprantamas dalykas: paruošiate du variantus, pažiūrite, kuris laimėjo, ir naudojate laimėtoją toliau. Praktikoje daugumoje e-parduotuvių šis ciklas nutrūksta ties pirmu žingsniu — imtis būna per maža, kad skirtumas ką nors reikštų.</p>
+      <p>Pavyzdys iš audito. Parduotuvė testuoja dvi temos eilutes 400 gavėjų sąraše, po 200 kiekvienam variantui. Variantas A gauna 22 % atidarymų, variantas B — 26 %. Atrodo, kad B laimėjo aiškiai. Realiai skirtumas yra aštuoni žmonės, ir jį lygiai taip pat galėjo lemti atsitiktinumas. Kitą savaitę tas pats testas gali duoti priešingą rezultatą.</p>
+      <p>Platformos šią problemą sprendžia skaičiuodamos laimėjimo tikimybę. <a href="https://help.klaviyo.com/hc/en-us/articles/360052793012" target="_blank" rel="noopener">Klaviyo dokumentacijoje</a> nurodyta, kad kampanijos testas laikomas statistiškai reikšmingu tik tada, kai <strong>kiekvieną variantą gavo bent 50 žmonių ir laimėjimo tikimybė siekia bent 90 %</strong>. Abi sąlygos turi būti įvykdytos vienu metu.</p>
+      <div class="post-note">50 gavėjų vienam variantui — tai riba, žemiau kurios platforma net neskaičiuoja laimėtojo. Tai ne rekomendacija, o absoliutus minimumas.</div>
+      <p>Srautams riba dar aukštesnė. Ten kiekvienam variantui reikia bent <strong>500 gavėjų</strong> — nes srautų žinutės siunčiamos po vieną, ne visam sąrašui iš karto, ir duomenys kaupiasi lėčiau. Mažesnėje parduotuvėje toks testas gali užtrukti kelis mėnesius, ir tai normalu.</p>
+
+      <h2 id="ka-testuoti" data-toc="Ką testuoti">Ką testuoti, kai testų skaičius ribotas</h2>
+      <p>Jei per metus galite atlikti keliolika patikimų testų, o ne šimtą, svarbu pradėti nuo dalykų, kurie keičia rezultatą labiausiai. Eiliškumas pagal poveikį, o ne pagal tai, ką lengviausia pakeisti:</p>
+      <div class="feat-grid full">
+        <div class="feat-card">
+          <div class="feat-num">/01</div>
+          <div class="feat-title">Pasiūlymas</div>
+          <div class="feat-body">Procentinė nuolaida prieš fiksuotą sumą, nemokamas pristatymas prieš dovaną. Didžiausias poveikis pajamoms iš visų testuojamų dalykų.</div>
+          <div class="feat-meta">Didelis poveikis</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-num">/02</div>
+          <div class="feat-title">Siuntimo laikas</div>
+          <div class="feat-body">Rytas prieš vakarą, darbo diena prieš savaitgalį. Nekainuoja nieko, o skirtumas dažnai matomas greitai.</div>
+          <div class="feat-meta">Didelis poveikis</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-num">/03</div>
+          <div class="feat-title">Laiško struktūra</div>
+          <div class="feat-body">Vienas produktas prieš tris, ilgas tekstas prieš trumpą. Keičia paspaudimų rodiklį labiau nei antraštės formuluotė.</div>
+          <div class="feat-meta">Vidutinis poveikis</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-num">/04</div>
+          <div class="feat-title">Temos eilutė</div>
+          <div class="feat-body">Populiariausias testas, bet poveikis mažesnis nei manoma — ir sunkiausiai išmatuojamas dėl iškraipytų atidarymų.</div>
+          <div class="feat-meta">Ribotas poveikis</div>
+        </div>
+      </div>
+      <p>Mygtuko spalva, šrifto dydis ar smulkūs teksto pakeitimai į šį sąrašą nepatenka ne todėl, kad neturi reikšmės, o todėl, kad jų poveikis per mažas, jog būtų patikimai išmatuojamas įprasto dydžio sąraše. Tokius sprendimus geriau priimti pagal gerą praktiką — kaip aprašėme <a href="/blog/naujienlaiskio-sablonas">naujienlaiškio šablono</a> straipsnyje — ir testų laiką skirti svarbesniems dalykams.</p>
+
+      <h2 id="metrika" data-toc="Pagal ką rinkti laimėtoją">Pagal kurį rodiklį rinkti laimėtoją</h2>
+      <p>Klaviyo kampanijų testuose leidžia pasirinkti vieną iš trijų laimėjimo rodiklių: atidarymo rodiklį, paspaudimų rodiklį arba užsakymų rodiklį. Pasirinkimas čia svarbesnis nei pats testas.</p>
+      <p>Atidarymo rodiklis nuo 2021 m. nebėra patikimas matas — Apple Mail Privacy Protection atsisiunčia laiškų turinį fone, todėl dalis „atidarymų“ įvyksta be jokio žmogaus dalyvavimo. Apie tai plačiau rašėme straipsnyje apie <a href="/blog/el-pasto-rodikliai">el. pašto rinkodaros rodiklius</a>. Praktinė pasekmė testams: jei laimėtoją renkate pagal atidarymus, dalis rezultato yra triukšmas.</p>
+      <p>Todėl saugiausia rinktis <strong>užsakymų rodiklį</strong>, kai testuojate pasiūlymą, ir <strong>paspaudimų rodiklį</strong>, kai testuojate laiško turinį ar struktūrą. Atidarymus galima palikti tik tada, kai testuojate būtent temos eilutę ir suprantate, kad rezultatas bus apytikslis — iškraipymas veikia abu variantus panašiai, tad santykinis palyginimas dar turi ribotą prasmę.</p>
+
+      <h2 id="kaip" data-toc="Kaip vykdyti testą">Kaip vykdyti testą, kad rezultatas būtų naudingas</h2>
+      <ul>
+        <li><strong>Vienas kintamasis vienu metu.</strong> Jei kartu keičiate temos eilutę ir pasiūlymą, laimėtojas nieko nepasakys apie priežastį.</li>
+        <li><strong>Hipotezė prieš testą.</strong> Užsirašykite, ko tikitės ir kodėl. Testas be hipotezės virsta atsitiktiniu bandymu, kurio rezultato nebus kaip pritaikyti kitur.</li>
+        <li><strong>Vienodos sąlygos.</strong> Abu variantai siunčiami tuo pačiu metu tam pačiam segmentui. Skirtingos dienos ar skirtingi segmentai testą sugadina.</li>
+        <li><strong>Rezultatas užrašomas.</strong> Be paprasto sąrašo, kas buvo testuota ir kas laimėjo, po pusmečio tie patys testai kartojami iš naujo.</li>
+        <li><strong>Laimėtojas pritaikomas toliau.</strong> Testas turi prasmę tik tada, kai jo išvada perkeliama į srautus ir kitas kampanijas.</li>
+      </ul>
+
+      <h2 id="mazi-sarasai" data-toc="Ką daryti su mažu sąrašu">Ką daryti, kai sąrašas per mažas testams</h2>
+      <p>Daugumai Lietuvos e-parduotuvių sąrašo dydis yra tikroji riba — ne noras testuoti. Jei kiekviena kampanija pasiekia porą tūkstančių žmonių, patikimų testų per metus išeis vienetai. Tai nereiškia, kad tobulinti neįmanoma; tai reiškia, kad reikia kitų būdų.</p>
+      <h3>Sukaupti testą per kelis siuntimus</h3>
+      <p>Vietoje vieno testo vienoje kampanijoje tą patį klausimą galima kartoti kelis kartus iš eilės ir žiūrėti į bendrą kryptį. Jei per keturias kampanijas rytinis siuntimas tris kartus buvo geresnis, tai stipresnis signalas nei vienas testas su 200 gavėjų. Formaliai tai nėra statistiškai griežta, bet praktiškai patikimiau nei sprendimas pagal vieną atsitiktinį rezultatą.</p>
+      <h3>Testuoti srautuose, ne kampanijose</h3>
+      <p>Srautų laiškai siunčiami nuolat, todėl gavėjai kaupiasi savaime. Testas <a href="/blog/welcome-serija">welcome serijos</a> pirmame laiške per kelis mėnesius surinks daugiau duomenų nei bet kuri vienkartinė kampanija — tereikia kantrybės jo neišjungti per anksti.</p>
+      <h3>Rinktis didesnius pokyčius</h3>
+      <p>Kuo didesnis skirtumas tarp variantų, tuo mažesnės imties užtenka jam pastebėti. Testuojant 10 % nuolaidą prieš nemokamą pristatymą rezultatas pasimatys greičiau nei testuojant dvi panašias temos eilutes. Mažame sąraše smulkūs testai yra beveik garantuotai laiko švaistymas.</p>
+
+      <h2 id="kada-neverta" data-toc="Kada testuoti neverta">Kada A/B testas apskritai neturi prasmės</h2>
+      <p>Yra situacijų, kai testavimas yra tiesiog blogas laiko panaudojimas. Pirmoji — kai sąrašas per mažas: prie kelių šimtų gavėjų net didelis skirtumas nebus patikimas, o sprendimai, priimti pagal tokį testą, gali būti žalingi.</p>
+      <p>Antroji — kai paskyroje dar nėra pagrindinių srautų. Testuoti naujienlaiškio temos eilutę, kai neveikia <a href="/blog/welcome-serija">welcome serija</a> ar <a href="/blog/apleistas-krepselis">apleistas krepšelis</a>, reiškia optimizuoti mažesnę pajamų dalį, paliekant didesnę nepaliestą. Tvarka svarbi: pirma sukuriama, tik paskui optimizuojama.</p>
+      <p>Trečioji — kai pristatomumas nesutvarkytas. Jei dalis laiškų apskritai nepasiekia gautųjų, testo rezultatai atspindės pristatomumo skirtumus, o ne turinio kokybę. Apie tai — <a href="/blog/pristatomumas">pristatomumo straipsnyje</a>.</p>
+
+      <h2 id="trukme" data-toc="Kiek laukti rezultato">Kiek laukti, kol testas baigsis</h2>
+      <p>Antra pagal dažnumą klaida po per mažos imties — testo nutraukimas per anksti. Pirmą valandą po išsiuntimo vienas variantas beveik visada atrodo geresnis, nes duomenų mažai ir kiekvienas naujas paspaudimas smarkiai pakeičia procentą. Sprendimas, priimtas tuo momentu, dažnai būna klaidingas.</p>
+      <p>Praktinė taisyklė — kampanijos testo rezultatą vertinti ne anksčiau nei po 24 valandų, o geriau po 48. Dalis žmonių laiškus atsidaro tik kitą dieną, ypač jei siųsta vakare arba prieš savaitgalį. Užsakymų rodikliui laiko reikia dar daugiau, nes tarp paspaudimo ir pirkimo dažnai praeina para ar dvi.</p>
+      <p>Srautų testai veikia kitaip: jie neturi pabaigos datos ir kaupia duomenis tol, kol juos sustabdote. Čia pagunda priešinga — pamiršti testą įjungtą metams. Verta pasižymėti kalendoriuje patikrinimo datą, pavyzdžiui po dviejų mėnesių, ir tada arba paskelbti laimėtoją, arba pripažinti, kad skirtumo nėra, ir testą baigti.</p>
+
+      <h2 id="rezultatai" data-toc="Orientyrai">Orientyrai vienoje vietoje</h2>
+      <div class="metric-row full">
+        <div class="metric">
+          <div class="mv">90%</div>
+          <div class="ml">Laimėjimo tikimybė</div>
+          <div class="ms">Klaviyo riba, nuo kurios testas laikomas reikšmingu.</div>
+        </div>
+        <div class="metric">
+          <div class="mv">50</div>
+          <div class="ml">Gavėjų kampanijoje</div>
+          <div class="ms">Minimumas kiekvienam variantui, Klaviyo.</div>
+        </div>
+        <div class="metric">
+          <div class="mv">500</div>
+          <div class="ml">Gavėjų sraute</div>
+          <div class="ms">Minimumas kiekvienam variantui srautų žinutėms.</div>
+        </div>
+        <div class="metric">
+          <div class="mv">1</div>
+          <div class="ml">Kintamasis per testą</div>
+          <div class="ms">Daugiau — ir priežasties nustatyti nebeįmanoma.</div>
+        </div>
+      </div>
+
+      <h2 id="toliau" data-toc="Kas toliau">Nuo ko pradėti</h2>
+      <p>Jei testų dar nedarėte, pradėkite nuo vieno per mėnesį — ne nuo penkių per savaitę. Pirmam testui rinkitės siuntimo laiką arba pasiūlymą, laimėtoją nustatykite pagal užsakymus ir rezultatą užsirašykite. Po kelių mėnesių turėsite ne atsitiktinių bandymų rinkinį, o kelias išvadas, kurias galima taikyti visai paskyrai.</p>
+      <p>Kaip testavimą įtraukiame į nuolatinį darbą su klientų paskyromis, aprašėme <a href="/paslaugos/naujienlaiskiai">naujienlaiškių paslaugos</a> puslapyje. O jei norite žinoti, ar jūsų sąrašas apskritai pakankamai didelis patikimiems testams — auditas atsako į tai per porą dienų.</p>
+
+      <div class="post-foot full">
+        <div class="post-author">
+          <span class="pa-mark" aria-hidden="true">N</span>
+          <div>
+            <div class="pa-name">NOCK Mail komanda</div>
+            <div class="pa-sub">Liepos 31, 2026 · Strategija</div>
+          </div>
+        </div>
+        <a class="btn" href="/blog">← Visi straipsniai</a>
+      </div>
+    </article>
+
+    <aside class="post-aside">
+      <nav class="post-toc" id="postToc" aria-label="Straipsnio turinys">
+        <span class="toc-label">↳ Turinys</span>
+      </nav>
+      <div class="side-card" style="position:static;">
+        <h3>Nemokamas auditas</h3>
+        <ul>
+          <li>Peržiūrime esamus srautus ir sąrašą</li>
+          <li>Įvardijame, kur prarandate pajamas</li>
+          <li>Atsakymas per 12 valandų</li>
+        </ul>
+        <a class="btn dark" href="/#contact">Susisiekti</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ───────── DUK ───────── -->
+<section class="wrap pad-y">
+  <div class="post-layout">
+    <div style="grid-column: 1 / -1; max-width: 900px;">
+      <div class="sub-sec-head">
+        <span class="eyebrow"><span class="arr">↳</span> Dažniausi klausimai</span>
+        <h2>Trumpi <span class="ital">atsakymai</span>.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Kiek gavėjų reikia, kad A/B testas būtų patikimas?</span><span class="ic">+</span></button>
+          <div class="faq-a"><div><p>Klaviyo kampanijos testą laiko statistiškai reikšmingu, kai kiekvieną variantą gavo bent 50 žmonių ir laimėjimo tikimybė siekia bent 90 %. Srautų žinutėms riba gerokai aukštesnė — bent 500 gavėjų kiekvienam variantui. Praktikoje 50 gavėjų yra absoliutus minimumas, o realiam sprendimui verta turėti kelis tūkstančius.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Ką testuoti pirmiausia?</span><span class="ic">+</span></button>
+          <div class="faq-a"><div><p>Pradėti verta nuo dalykų, kurie keičia rezultatą labiausiai: pasiūlymo ir siuntimo laiko. Temos eilutė yra populiariausias testas, bet jos poveikis mažesnis nei atrodo, o dėl Apple Mail Privacy Protection atidarymo rodiklis nebėra patikimas testo matas. Testuoti spalvą ar mygtuko tekstą prasminga tik dideliuose sąrašuose.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Kodėl A/B testas parodė laimėtoją, bet rezultatas nepasikartojo?</span><span class="ic">+</span></button>
+          <div class="faq-a"><div><p>Dažniausiai todėl, kad imtis buvo per maža ir skirtumas atsirado atsitiktinai. Antra dažna priežastis — testuoti buvo keli dalykai vienu metu, todėl neaišku, kuris lėmė rezultatą. Trečia — laimėtojas nustatytas pagal atidarymus, kurie šiandien iškraipyti automatinių atidarymų.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Ar galima testuoti srautų laiškus?</span><span class="ic">+</span></button>
+          <div class="faq-a"><div><p>Galima, ir tai dažnai vertingiau nei kampanijų testai, nes srautų laiškai siunčiami nuolat. Bet reikia kantrybės: Klaviyo srautų žinutei reikalauja bent 500 gavėjų kiekvienam variantui, o mažesnėse parduotuvėse tiek susikaupia per kelias savaites ar mėnesius.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SUSIJĘ STRAIPSNIAI ───────── -->
+<section class="wrap pad-y">
+  <div class="sub-sec-head">
+    <span class="eyebrow"><span class="arr">↳</span> Skaitykite toliau</span>
+    <h2>Susiję <span class="ital">straipsniai</span>.</h2>
+  </div>
+  <div class="related-grid reveal">
+    <a class="related-card" href="/blog/el-pasto-rodikliai">
+      <span class="rl">Strategija · 7 min</span>
+      <span class="rt">El. pašto rodikliai</span>
+      <span class="rd">Atidarymo rodiklis nuo 2021 m. rodo netiesą. Kurie rodikliai patikimi, kokios jų ribos ir ką daryti su išpūstais Apple skaičiais.</span>
+      <span class="ra">Skaityti →</span>
+    </a>
+    <a class="related-card" href="/blog/naujienlaiskio-sablonas">
+      <span class="rl">Strategija · 7 min</span>
+      <span class="rt">Naujienlaiškio šablonas</span>
+      <span class="rd">Geras naujienlaiškis nėra gražus — jis nuspėjamas. Šeši blokai, kuriuos užpildę turėsite šabloną, tinkantį kas savaitę, be dizainerio.</span>
+      <span class="ra">Skaityti →</span>
+    </a>
+    <a class="related-card" href="/blog/segmentavimas">
+      <span class="rl">Strategija · 7 min</span>
+      <span class="rt">Segmentavimas</span>
+      <span class="rd">Tas pats laiškas, išsiųstas trims skirtingoms grupėms vietoje vienos, dažnai atneša 30–50 % daugiau pajamų. Nuo ko pradėti, jei segmentų dar neturite.</span>
+      <span class="ra">Skaityti →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<section class="wrap pad-y">
+  <div class="sub-cta reveal">
+    <div class="cta-bg flux-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span><span class="blob b6"></span><span class="blob b7"></span><span class="blob b8"></span></div>
+    <span class="eyebrow" style="color:rgba(250,250,247,0.6);"><span class="arr">↳</span> Nemokamas auditas</span>
+    <h2>Norite, kad tai <span class="ital">veiktų</span><br>jūsų paskyroje?</h2>
+    <p>Peržiūrime jūsų sąrašą, srautus ir pristatomumą, o tada pasakome, ką konkrečiai keistume ir kokios naudos iš to tikėtis. Be įsipareigojimų.</p>
+    <div class="cta-row">
+      <a class="btn accent" href="/#contact">Susisiekti</a>
+      <a class="btn" href="/skaiciuokle">Pajamų skaičiuoklė →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer class="wrap footer">
+  <div class="footer-grid">
+    <div class="col">
+      <h4>Paslaugos</h4>
+      <a href="/paslaugos/automatizacijos">El. pašto automatizacijos</a>
+      <a href="/paslaugos/naujienlaiskiai">Naujienlaiškiai</a>
+      <a href="/#process">Auditas ir strategija</a>
+    </div>
+    <div class="col">
+      <h4>Platformos</h4>
+      <a href="/klaviyo-agentura">Klaviyo platforma</a>
+      <a href="/omnisend-agentura">Omnisend platforma</a>
+      <a href="/skaiciuokle">Pajamų skaičiuoklė</a>
+    </div>
+    <div class="col">
+      <h4>Blogas</h4>
+      <a href="/blog">Visi straipsniai</a>
+      <a href="/blog/el-pasto-rodikliai">El. pašto rodikliai</a>
+      <a href="/blog/shopify-el-pasto-rinkodara">Shopify el. paštas</a>
+    </div>
+    <div class="col">
+      <h4>Kontaktai</h4>
+      <a href="mailto:info@nock.lt">info@nock.lt</a>
+      <a href="tel:+37067726884">+370 677 26884</a>
+      <a href="/#contact">V. Nagevičiaus g. 3, Vilnius</a>
+    </div>
+    <div class="col">
+      <h4>Sekite</h4>
+      <a href="https://www.instagram.com/nock.agency/" target="_blank" rel="noopener">Instagram ↗︎</a>
+      <a href="https://www.facebook.com/profile.php?id=61589055015703" target="_blank" rel="noopener">Facebook ↗︎</a>
+      <a href="https://www.nock.lt/" target="_blank" rel="noopener">Reklama ↗︎</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MB Briskhaus Solutions — Visos teisės saugomos</span>
+    <span>Vilnius</span>
+  </div>
+  <div class="footer-marquee" aria-hidden="true">
+    <div class="mq-track"><span class="mq-item">Nock <span class="wm-light">Mail</span></span><span class="mq-item">Nock <span class="wm-light">Mail</span></span><span class="mq-item">Nock <span class="wm-light">Mail</span></span><span class="mq-item">Nock <span class="wm-light">Mail</span></span><span class="mq-item">Nock <span class="wm-light">Mail</span></span><span class="mq-item">Nock <span class="wm-light">Mail</span></span></div>
+  </div>
+</footer>
+
+<script src="/main.js" defer></script>
+
+</body>
+</html>
