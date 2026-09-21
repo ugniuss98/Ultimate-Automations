@@ -1,4 +1,4 @@
-/* NOCK Mail — bendra logika visiems puslapiams.
+/* Ultimate Automations — bendra logika visiems puslapiams.
    Kiekvienas blokas apsaugotas nuo trūkstamų elementų, nes puslapiai skiriasi. */
 
 // ───────── Nav: slėpimas scrollinant + hero blend ─────────
@@ -513,6 +513,39 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const data = new FormData(form);
     data.append('page', location.pathname);
 
+    function markSent() {
+      form.classList.add('is-sent');
+      stage.style.height = '';
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'kontaktu_anketa' });
+      setTimeout(keepInView, 60);
+    }
+
+    /* Svetainė neturi formų backend'o, todėl atsakymus surenkame į laišką ir
+       atidarome pašto programą. Jei kada atsiras endpoint'as — užtenka forma'i
+       nurodyti `action` ir nuimti `data-mailto`. */
+    const mailto = form.dataset.mailto;
+    if (mailto) {
+      const labels = {};
+      steps.forEach(st => { if (st.dataset.key) labels[st.dataset.key] = st.dataset.label || st.dataset.key; });
+      const grouped = new Map();
+      for (const [k, v] of data.entries()) {
+        if (!String(v).trim()) continue;
+        if (!grouped.has(k)) grouped.set(k, []);
+        grouped.get(k).push(v);
+      }
+      const lines = [];
+      grouped.forEach((vals, k) => {
+        lines.push((labels[k] || k) + ': ' + vals.join(', '));
+      });
+      const body = 'Užklausa iš ultimateautomations.com anketos\n\n' + lines.join('\n');
+      const href = 'mailto:' + mailto
+        + '?subject=' + encodeURIComponent('Nauja užklausa iš anketos')
+        + '&body=' + encodeURIComponent(body);
+      markSent();
+      window.location.href = href;
+      return;
+    }
+
     try {
       const res = await fetch(form.action, {
         method: 'POST',
@@ -520,14 +553,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         headers: { Accept: 'application/json' }
       });
       if (!res.ok) throw new Error('bad response');
-      form.classList.add('is-sent');
-      stage.style.height = '';
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'kontaktu_anketa' });
-      setTimeout(keepInView, 60);
+      markSent();
     } catch {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Siųsti užklausą';
-      showErr(step, 'Nepavyko išsiųsti. Bandykite dar kartą arba rašykite info@nock.lt');
+      showErr(step, 'Nepavyko išsiųsti. Bandykite dar kartą arba rašykite justas@ultimateautomations.com');
     }
   });
 })();
@@ -657,8 +687,11 @@ document.querySelectorAll('.faq-item').forEach(item => {
 (function () {
   const DELAY = 30000;                        // kada iššoka (ms)
   const SNOOZE_DAYS = 30;                     // po uždarymo nerodome tiek dienų
-  const KEY = 'nock_audit_pop';
-  const ENDPOINT = 'https://formspree.io/f/mykvaqlv';
+  const KEY = 'ua_lead_pop';
+  /* Kol svetainė neturi formų backend'o, pop-up'as išjungtas: tuščias ENDPOINT
+     reiškia „nerodyti". Įrašius adresą, blokas vėl pradeda veikti. */
+  const ENDPOINT = '';
+  if (!ENDPOINT) return;
 
   // Jau paliko el. paštą arba neseniai uždarė — nerodome.
   let saved = null;
@@ -819,7 +852,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
   // Administravimo puslapyje jo nereikia.
   if (document.body.dataset.noDock === '1') return;
 
-  const BOOK_URL = 'https://calendar.app.google/SEQ3M5fEVbNcDR239';
+  const BOOK_URL = '/#kontaktai';
 
   // Ikonos — inline SVG, o ne simboliai: ☏/▦ tipo glifų Inter neturi ir
   // mobiliuosiuose jie virstų emoji (ta pati klaida kaip su rodyklėmis).
@@ -839,25 +872,18 @@ document.querySelectorAll('.faq-item').forEach(item => {
       <span class="cd-chev" aria-hidden="true">${ICO.chev}</span>
     </button>
     <div class="cd-panel" id="contactDockPanel">
-      <a class="cd-item" href="mailto:info@nock.lt">
+      <a class="cd-item" href="mailto:justas@ultimateautomations.com">
         <span class="cd-ico" aria-hidden="true">${ICO.mail}</span>
         <span class="cd-txt">
           <span class="cd-k">El. paštas</span>
-          <span class="cd-v">info@nock.lt</span>
+          <span class="cd-v">justas@ultimateautomations.com</span>
         </span>
       </a>
-      <a class="cd-item" href="tel:+37067726884">
-        <span class="cd-ico" aria-hidden="true">${ICO.phone}</span>
-        <span class="cd-txt">
-          <span class="cd-k">Telefonas</span>
-          <span class="cd-v">+370 677 26884</span>
-        </span>
-      </a>
-      <a class="cd-item cd-book" href="${BOOK_URL}" target="_blank" rel="noopener">
+      <a class="cd-item cd-book" href="${BOOK_URL}">
         <span class="cd-ico" aria-hidden="true">${ICO.cal}</span>
         <span class="cd-txt">
-          <span class="cd-k">Google Meet</span>
-          <span class="cd-v">Rezervuoti pokalbį →</span>
+          <span class="cd-k">Anketa</span>
+          <span class="cd-v">Aptarti procesą →</span>
         </span>
       </a>
     </div>`;
